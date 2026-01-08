@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -87,14 +88,31 @@
             font-size: 20px;
             font-weight: bold;
             letter-spacing: 1px;
+            cursor: pointer;
         }
 
         .nav-link:hover {
             color: #e74c3c;
         }
 
+        .nav-link.active {
+            color: #e74c3c;
+        }
+
         .center-content {
             flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -112,15 +130,103 @@
             font-size: 16px;
             color: #666;
         }
+
+        .page-title {
+            font-size: 42px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        .page-content {
+            max-width: 700px;
+            line-height: 1.8;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .work-item {
+            background-color: #f5f5f5;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .work-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .work-item h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .work-item p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .project-detail {
+            padding: 20px;
+        }
+
+        .back-button {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-bottom: 30px;
+            align-self: flex-start;
+        }
+
+        .back-button:hover {
+            background-color: #e74c3c;
+        }
+
+        .project-content {
+            max-width: 800px;
+            text-align: left;
+        }
+
+        .project-content h3 {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+
+        .project-content p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .project-image-placeholder {
+            width: 100%;
+            height: 400px;
+            background-color: #d0d0d0;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
+
 <body>
     <aside class="sidebar">
         <div class="profile-circle"></div>
         <button class="cv-button">CV</button>
         <p class="description">
-            Lorem ipsum dolor sit amet consectetur adipiscing elit blandit rhoncus ultrices 
-            cubilia, conubia tempor tortor pellentesque sollicitudin ac suspendisse 
+            Lorem ipsum dolor sit amet consectetur adipiscing elit blandit rhoncus ultrices
+            cubilia, conubia tempor tortor pellentesque sollicitudin ac suspendisse
             ullamcorper facilisi.
         </p>
         <div class="social-buttons">
@@ -133,15 +239,214 @@
 
     <main class="main-content">
         <nav class="navigation">
-            <a href="about.html" class="nav-link">ABOUT</a>
-            <a href="work.html" class="nav-link">WORK</a>
-            <a href="index.html" class="nav-link">HOME</a>
+            <a class="nav-link" data-page="about">ABOUT</a>
+            <a class="nav-link" data-page="work">WORK</a>
+            <a class="nav-link active" data-page="home">HOME</a>
         </nav>
 
         <div class="center-content">
-            <h1 class="main-title">MARÍA SÁNCHEZ DOMÍNGUEZ</h1>
-            <p class="subtitle">Architecture / Computational Design</p>
+            <!-- HOME PAGE -->
+            <div id="home" class="page active">
+                <h1 class="main-title">MARÍA SÁNCHEZ DOMÍNGUEZ</h1>
+                <p class="subtitle">Architecture / Computational Design</p>
+            </div>
+
+            <!-- ABOUT PAGE -->
+            <div id="about" class="page">
+                <h2 class="page-title">ABOUT</h2>
+                <div class="page-content">
+                    <p style="margin-bottom: 20px;">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <p style="margin-bottom: 20px;">
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                        mollit anim id est laborum.
+                    </p>
+                    <p>
+                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                        laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto
+                        beatae vitae dicta sunt explicabo.
+                    </p>
+                </div>
+            </div>
+
+            <!-- WORK PAGE -->
+            <div id="work" class="page">
+                <h2 class="page-title">WORK</h2>
+                <div class="work-grid">
+                    <div class="work-item" data-project="1">
+                        <h3>Project 1</h3>
+                        <p>Computational Design</p>
+                    </div>
+                    <div class="work-item" data-project="2">
+                        <h3>Project 2</h3>
+                        <p>Architecture</p>
+                    </div>
+                    <div class="work-item" data-project="3">
+                        <h3>Project 3</h3>
+                        <p>Urban Planning</p>
+                    </div>
+                    <div class="work-item" data-project="4">
+                        <h3>Project 4</h3>
+                        <p>Interior Design</p>
+                    </div>
+                    <div class="work-item" data-project="5">
+                        <h3>Project 5</h3>
+                        <p>Parametric Design</p>
+                    </div>
+                    <div class="work-item" data-project="6">
+                        <h3>Project 6</h3>
+                        <p>Sustainability</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROJECT DETAIL PAGES -->
+            <div id="project-1" class="page project-detail">
+                <button class="back-button">← Back to Work</button>
+                <h2 class="page-title">Project 1</h2>
+                <div class="project-content">
+                    <div class="project-image-placeholder"></div>
+                    <h3>Computational Design</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                        mollit anim id est laborum.</p>
+                </div>
+            </div>
+
+            <div id="project-2" class="page project-detail">
+                <button class="back-button">← Back to Work</button>
+                <h2 class="page-title">Project 2</h2>
+                <div class="project-content">
+                    <div class="project-image-placeholder"></div>
+                    <h3>Architecture</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                        mollit anim id est laborum.</p>
+                </div>
+            </div>
+
+            <div id="project-3" class="page project-detail">
+                <button class="back-button">← Back to Work</button>
+                <h2 class="page-title">Project 3</h2>
+                <div class="project-content">
+                    <div class="project-image-placeholder"></div>
+                    <h3>Urban Planning</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                        mollit anim id est laborum.</p>
+                </div>
+            </div>
+
+            <div id="project-4" class="page project-detail">
+                <button class="back-button">← Back to Work</button>
+                <h2 class="page-title">Project 4</h2>
+                <div class="project-content">
+                    <div class="project-image-placeholder"></div>
+                    <h3>Interior Design</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                        mollit anim id est laborum.</p>
+                </div>
+            </div>
+
+            <div id="project-5" class="page project-detail">
+                <button class="back-button">← Back to Work</button>
+                <h2 class="page-title">Project 5</h2>
+                <div class="project-content">
+                    <div class="project-image-placeholder"></div>
+                    <h3>Parametric Design</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                        mollit anim id est laborum.</p>
+                </div>
+            </div>
+
+            <div id="project-6" class="page project-detail">
+                <button class="back-button">← Back to Work</button>
+                <h2 class="page-title">Project 6</h2>
+                <div class="project-content">
+                    <div class="project-image-placeholder"></div>
+                    <h3>Sustainability</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                        mollit anim id est laborum.</p>
+                </div>
+            </div>
         </div>
     </main>
+
+    <script>
+        // Navigation functionality
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pages = document.querySelectorAll('.page');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                // Remove active class from all links and pages
+                navLinks.forEach(l => l.classList.remove('active'));
+                pages.forEach(p => p.classList.remove('active'));
+
+                // Add active class to clicked link
+                this.classList.add('active');
+
+                // Show corresponding page
+                const pageId = this.getAttribute('data-page');
+                document.getElementById(pageId).classList.add('active');
+            });
+        });
+
+        // Project item clicks
+        const workItems = document.querySelectorAll('.work-item');
+
+        workItems.forEach(item => {
+            item.addEventListener('click', function () {
+                const projectId = this.getAttribute('data-project');
+
+                // Hide all pages
+                pages.forEach(p => p.classList.remove('active'));
+
+                // Show project detail page
+                document.getElementById('project-' + projectId).classList.add('active');
+            });
+        });
+
+        // Back button functionality
+        const backButtons = document.querySelectorAll('.back-button');
+
+        backButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                // Hide all pages
+                pages.forEach(p => p.classList.remove('active'));
+
+                // Show work page
+                document.getElementById('work').classList.add('active');
+            });
+        });
+    </script>
 </body>
+
 </html>
