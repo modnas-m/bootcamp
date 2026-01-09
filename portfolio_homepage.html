@@ -46,6 +46,13 @@
             cursor: pointer;
             margin-bottom: 35px;
             letter-spacing: 2px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+
+        .cv-button:hover {
+            background-color: #e74c3c;
         }
 
         .description {
@@ -234,7 +241,7 @@
 <body>
     <aside class="sidebar">
         <img src="images/8040.jpg" alt="María Sánchez Domínguez" class="profile-circle">
-        <button class="cv-button">CV</button>
+        <a href="CV_MariaSanchez.pdf" download class="cv-button">CV</a>
         <p class="description">
             I'm María, a BIM and computational design enthusiast (B. Arch - ETSAB, M.Arch - ETSAM) based in Barcelona, Spain. 
             Specialized in BIM modeling + implementation and BIM to fabrication projects, with a focus on Rhino/Grasshopper–Revit
