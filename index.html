@@ -236,6 +236,17 @@
             background-color: #d0d0d0;
             margin-bottom: 20px;
         }
+
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 340px;
+            width: calc(100% - 340px);
+            height: 100vh;
+            background-color: #fff;
+            z-index: -1;
+            display: block;
+        }
     </style>
 </head>
 
@@ -255,6 +266,8 @@
             <a href="https://github.com/modnas-m" class="social-btn" aria-label="GitHub" title="GitHub" target="_blank">◆</a>
         </div>
     </aside>
+
+    <canvas id="bg-canvas"></canvas>
 
     <main class="main-content">
         <nav class="navigation">
@@ -463,6 +476,98 @@
                 document.getElementById('work').classList.add('active');
             });
         });
+
+        // Interactive dot background
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        let mouseX = 0;
+        let mouseY = 0;
+        
+        // Resize canvas to match window
+        function resizeCanvas() {
+            canvas.width = window.innerWidth - 340;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        
+        // Track mouse position
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX - 340;
+            mouseY = e.clientY;
+        });
+        
+        // Create dots
+        const dots = [];
+        const dotCount = 50;
+        const influenceRadius = 120;
+        const minRadius = 1.5;
+        const maxRadius = 3;
+        
+        class Dot {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.baseRadius = minRadius + Math.random() * (maxRadius - minRadius);
+                this.radius = this.baseRadius;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+            }
+            
+            update() {
+                // Gentle floating motion
+                this.x += this.vx;
+                this.y += this.vy;
+                
+                // Wrap around edges
+                if (this.x < 0) this.x = canvas.width;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.y < 0) this.y = canvas.height;
+                if (this.y > canvas.height) this.y = 0;
+                
+                // Calculate distance to cursor
+                const dx = this.x - mouseX;
+                const dy = this.y - mouseY;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                // Shrink when cursor approaches
+                if (distance < influenceRadius) {
+                    const influence = 1 - (distance / influenceRadius);
+                    this.radius = this.baseRadius * (0.2 + influence * 0.8);
+                } else {
+                    this.radius = this.baseRadius;
+                }
+            }
+            
+            draw() {
+                ctx.fillStyle = '#e74c3c';
+                ctx.globalAlpha = 0.6;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.globalAlpha = 1;
+            }
+        }
+        
+        // Initialize dots
+        for (let i = 0; i < dotCount; i++) {
+            dots.push(new Dot());
+        }
+        
+        // Animation loop
+        function animate() {
+            ctx.fillStyle = '#fff';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            dots.forEach(dot => {
+                dot.update();
+                dot.draw();
+            });
+            
+            requestAnimationFrame(animate);
+        }
+        animate();
     </script>
 </body>
 
