@@ -4,7 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>María Sánchez Domínguez</title>
+    <title>María Sánchez Domínguez - BIM & Computational Architect Portfolio</title>
+    <meta name="description" content="María Sánchez Domínguez - BIM and computational design specialist. Portfolio showcasing architectural projects, computational design, and BIM to fabrication workflows.">
+    <meta property="og:title" content="María Sánchez Domínguez - BIM & Computational Architect">
+    <meta property="og:description" content="Portfolio of María Sánchez Domínguez, an architect and computational design specialist based in Barcelona. Specializing in BIM modeling, Rhino/Grasshopper interoperability, and parametric design.">
+    <meta property="og:type" content="website">
     <style>
         * {
             margin: 0;
@@ -19,7 +23,11 @@
         }
 
         .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 340px;
+            height: 100vh;
             background-color: #f5f5f5;
             padding: 40px 30px;
             border-right: 3px solid #e74c3c;
@@ -27,6 +35,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            overflow-y: auto;
         }
 
         .profile-circle {
@@ -89,6 +98,7 @@
         }
 
         .main-content {
+            margin-left: 340px;
             flex: 1;
             display: flex;
             flex-direction: column;
@@ -177,11 +187,17 @@
             padding: 30px;
             text-align: center;
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: background-color 0.3s, transform 0.3s;
         }
 
         .work-item:hover {
+            background-color: #e74c3c;
+            color: #fff;
             transform: translateY(-5px);
+        }
+
+        .work-item:hover p {
+            color: #f2a8a0;
         }
 
         .work-item h3 {
@@ -199,23 +215,27 @@
         }
 
         .back-button {
-            background-color: #000;
-            color: #fff;
+            background-color: transparent;
+            color: #000;
             border: none;
-            padding: 10px 20px;
+            border-bottom: 2px solid #000;
+            padding: 10px 0;
             font-size: 14px;
             cursor: pointer;
             margin-bottom: 30px;
             align-self: flex-start;
+            transition: color 0.3s, border-color 0.3s;
         }
 
         .back-button:hover {
-            background-color: #e74c3c;
+            color: #e74c3c;
+            border-bottom-color: #e74c3c;
         }
 
         .project-content {
-            max-width: 800px;
+            max-width: 1000px;
             text-align: left;
+            margin: 0 auto;
         }
 
         .project-content h3 {
@@ -262,8 +282,8 @@
         <div class="social-buttons">
             <a href="mailto:maria.sanchez.arch@gmail.com" class="social-btn" aria-label="Email" title="Email">✉</a>
             <a href="https://www.linkedin.com/in/mar%C3%ADa-s%C3%A1nchez-dom%C3%ADnguez-arch/" class="social-btn" aria-label="LinkedIn" title="LinkedIn" target="_blank">in</a>
-            <a href="https://www.instagram.com/" class="social-btn" aria-label="Instagram" title="Instagram" target="_blank">✦</a>
-            <a href="https://github.com/modnas-m" class="social-btn" aria-label="GitHub" title="GitHub" target="_blank">◆</a>
+            <a href="https://www.instagram.com/" class="social-btn" aria-label="Instagram" title="Instagram" target="_blank"><img src="images/ig.png" alt="Instagram" style="width: 20px; height: 20px;"></a>
+            <a href="https://github.com/modnas-m" class="social-btn" aria-label="GitHub" title="GitHub" target="_blank"><img src="images/gh.png" alt="GitHub" style="width: 20px; height: 20px;"></a>
         </div>
     </aside>
 
@@ -271,9 +291,9 @@
 
     <main class="main-content">
         <nav class="navigation">
-            <a class="nav-link" data-page="about">ABOUT</a>
-            <a class="nav-link" data-page="work">WORK</a>
             <a class="nav-link active" data-page="home">HOME</a>
+            <a class="nav-link" data-page="work">WORK</a>
+            <a class="nav-link" data-page="about">ABOUT</a>
         </nav>
 
         <div class="center-content">
@@ -308,28 +328,28 @@
                 <h2 class="page-title">WORK</h2>
                 <div class="work-grid">
                     <div class="work-item" data-project="1">
-                        <h3>Project 1</h3>
+                        <h3>The Huddle</h3>
                         <p>Computational Design</p>
                     </div>
                     <div class="work-item" data-project="2">
-                        <h3>Project 2</h3>
-                        <p>Architecture</p>
+                        <h3>Malqaf Vaults</h3>
+                        <p>Computational Design</p>
                     </div>
                     <div class="work-item" data-project="3">
-                        <h3>Project 3</h3>
-                        <p>Urban Planning</p>
+                        <h3>Stadium Façade</h3>
+                        <p>BIM To Fabrication</p>
                     </div>
                     <div class="work-item" data-project="4">
-                        <h3>Project 4</h3>
-                        <p>Interior Design</p>
+                        <h3>Island Topography</h3>
+                        <p>Earthworks</p>
                     </div>
                     <div class="work-item" data-project="5">
-                        <h3>Project 5</h3>
-                        <p>Parametric Design</p>
+                        <h3>Heterotopy</h3>
+                        <p>Critical Thought</p>
                     </div>
                     <div class="work-item" data-project="6">
-                        <h3>Project 6</h3>
-                        <p>Sustainability</p>
+                        <h3>Syntax</h3>
+                        <p>Modular Architecture</p>
                     </div>
                 </div>
             </div>
@@ -337,91 +357,71 @@
             <!-- PROJECT DETAIL PAGES -->
             <div id="project-1" class="page project-detail">
                 <button class="back-button">← Back to Work</button>
-                <h2 class="page-title">Project 1</h2>
+                <h2 class="page-title">The Huddle</h2>
                 <div class="project-content">
-                    <div class="project-image-placeholder"></div>
-                    <h3>Computational Design</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                        mollit anim id est laborum.</p>
+                    <img src="images/Huddle1.png" alt="The Huddle" style="width: 100%; max-height: 600px; object-fit: cover; margin-bottom: 20px;">
+                    <h3>Wind-adaptive Research Hub in Punta Arenas, Chile</h3>
+                    <p>More info on the <a href="https://blog.iaac.net/the-huddle-wind-adaptive-research-hub-in-punta-arenas-chile/" target="_blank" style="color: #e74c3c; text-decoration: none; border-bottom: 1px solid #e74c3c;">IAAC Blog</a></p>
                 </div>
             </div>
 
             <div id="project-2" class="page project-detail">
                 <button class="back-button">← Back to Work</button>
-                <h2 class="page-title">Project 2</h2>
+                <h2 class="page-title">Malqaf Vaults</h2>
                 <div class="project-content">
-                    <div class="project-image-placeholder"></div>
-                    <h3>Architecture</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                        mollit anim id est laborum.</p>
+                    <img src="images/Malqaf1.png" alt="Malqaf Vaults" style="width: 100%; max-height: 600px; object-fit: cover; margin-bottom: 20px;">
+                    <h3>A Computational Interpretation of Cairene Tradition</h3>
+                    <p>More info on the <a href="https://blog.iaac.net/a-computational-interpretation-of-cairene-tradition/" target="_blank" style="color: #e74c3c; text-decoration: none; border-bottom: 1px solid #e74c3c;">IAAC Blog</a></p>
+                    <img src="images/Malqaf2.jpg" alt="Malqaf Vaults" style="width: 100%; max-height: 600px; object-fit: cover; margin-bottom: 20px;">
+                    <img src="images/Malqaf3.gif" alt="Malqaf Vaults" style="width: 100%; max-height: 600px; object-fit: cover; margin-bottom: 20px;">
+                    <img src="images/Malqaf4.png" alt="Malqaf Vaults" style="width: 100%; max-height: 600px; object-fit: cover; margin-bottom: 20px;">
                 </div>
             </div>
 
             <div id="project-3" class="page project-detail">
                 <button class="back-button">← Back to Work</button>
-                <h2 class="page-title">Project 3</h2>
+                <h2 class="page-title">Stadium Façade</h2>
                 <div class="project-content">
-                    <div class="project-image-placeholder"></div>
-                    <h3>Urban Planning</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                        mollit anim id est laborum.</p>
+                    <img src="images/Stadium.jpg" alt="Stadium Façade" style="width: 100%; max-height: 600px; object-fit: cover; margin-bottom: 20px;">
+                    <h3>BIM To Fabrication</h3>
+                    <p>The client asked for advisory in the creation of a precise Revit model for the façade structure of a stadium. Along the process this evolved into two tasks: I) the generation of a full, precise BIM model that allowed for conflict detection (within the system as well as with other disciplines, like the main stadium structure) and 2) the creation of fabrication models reading data off the base model.</p>
+                    <p>All processes were designed and automated through Rhino.Inside Revit and Grasshopper, allowing the team to leave out fabrication specific software like Solidworks.</p>
                 </div>
             </div>
 
             <div id="project-4" class="page project-detail">
                 <button class="back-button">← Back to Work</button>
-                <h2 class="page-title">Project 4</h2>
+                <h2 class="page-title">Island Topography</h2>
                 <div class="project-content">
-                    <div class="project-image-placeholder"></div>
-                    <h3>Interior Design</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                        mollit anim id est laborum.</p>
+                    <img src="images/Island.jpg" alt="Island Topography" style="width: 100%; max-height: 600px; object-fit: cover; margin-bottom: 20px;">
+                    <h3>Urbanism and topography BIM package in Saudi Arabia</h3>
+                    <p>The client needed a team with both BIM and complex modelling expertise to be able to carry out the earthwork and urbanism tasks on a Revit model.</p>
+                    <p>Working alongside the urban planners and architects on a live project, the topography as well as roads, paving, urban furniture, urban energy systems etc. were introduced through Rhino. Inside and multiple Grasshopper scripts.</p>
                 </div>
             </div>
 
             <div id="project-5" class="page project-detail">
                 <button class="back-button">← Back to Work</button>
-                <h2 class="page-title">Project 5</h2>
+                <h2 class="page-title">Heterotopy</h2>
                 <div class="project-content">
-                    <div class="project-image-placeholder"></div>
-                    <h3>Parametric Design</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                        mollit anim id est laborum.</p>
+                    <img src="images/Heterotopy1.jpg" alt="Heterotopy" style="width: 100%; max-height: 600px; object-fit: cover; margin-bottom: 20px;">
+                    <h3>Critical scattered penitentiary complex in Alfama, Lisbon</h3>
+                    <p>Heterotopy is proposed as a penitentiary system based on the social division of its subjects and their punishment by means of sordid architectures. In contrast to this, the proposal manifests a hypothetical reality in which a penitentiary complex occupies the old town of Lisbon, superimposing a penitentiary plot to the civil grid and weaving both realities together.</p>
+                    <img src="images/Heterotopy2.jpg" alt="Heterotopy" style="width: 100%; max-height: 600px; object-fit: cover; margin-bottom: 20px;">
+                    <img src="images/Heterotopy3.jpg" alt="Heterotopy" style="width: 100%; max-height: 600px; object-fit: cover; margin-bottom: 20px;">
                 </div>
             </div>
 
             <div id="project-6" class="page project-detail">
                 <button class="back-button">← Back to Work</button>
-                <h2 class="page-title">Project 6</h2>
+                <h2 class="page-title">Syntax</h2>
                 <div class="project-content">
-                    <div class="project-image-placeholder"></div>
-                    <h3>Sustainability</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                        mollit anim id est laborum.</p>
+                    <img src="images/Syntax1.jpg" alt="Syntax" style="width: 100%; max-height: 600px; object-fit: cover; margin-bottom: 20px;">
+                    <h3>Crisis residential module in Barcelona</h3>
+                    <p>SYNTAX seeks to be a system that generates space according to need, rather than limiting itself to a specific form. This allows the project to retain a degree of uncertainty both spatially and temporally and, therefore, to be located within the conceptual framework of emergency housing—change, versatility.</p>
+                    <p>The proposal takes the form of a lightweight platform frame system in which the number of variations of structural elements has been minimized in terms of cost and constructive effectiveness.</p>
+                    <img src="images/Syntax2.jpg" alt="Syntax" style="width: 100%; max-height: 600px; object-fit: cover; margin-bottom: 20px;">
+                    <img src="images/Syntax3.jpg" alt="Syntax" style="width: 100%; max-height: 600px; object-fit: cover; margin-bottom: 20px;">
                 </div>
             </div>
         </div>
